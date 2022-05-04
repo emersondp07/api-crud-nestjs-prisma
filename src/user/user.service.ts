@@ -53,11 +53,11 @@ export class UserService {
     });
   }
 
-  update(id: number, data: UpdateUserDto) {
+  update(id: number, updateUserDto: UpdateUserDto) {
     return this.prisma.user.update({
       where: { id },
       data: {
-        ...UpdateUserDto,
+        ...updateUserDto,
         updatedAt: new Date(),
       }
     });
