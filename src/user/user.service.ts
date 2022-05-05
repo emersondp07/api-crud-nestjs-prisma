@@ -1,4 +1,4 @@
-import { Delete, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -15,12 +15,14 @@ export class UserService {
       let data_atual = await new Date();
       let data_nascimento = await new Date(birthdate);
       let anos = await data_atual.getFullYear() - data_nascimento.getFullYear();
-  
-      if(await data_atual.getMonth() != data_nascimento.getMonth())
+
+      
+      if(await data_atual.getMonth() != data_nascimento.getMonth())  
       if(await data_atual.getMonth() <= data_nascimento.getMonth())
       if(await data_atual.getDate() < data_nascimento.getDate())
-      if(await anos < 18)
+      if(await anos <= 18)
       return "Você não é maior de idade"
+
 
     const zipcode = await createUserDto.zipcode
 
